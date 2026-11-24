@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Google 캘린더 열기</title>
+<style>
+  :root { color-scheme: light dark; }
+  body { max-width: 480px; margin: 64px auto; padding: 0 16px; font: 17px/1.6 -apple-system, "Apple SD Gothic Neo", sans-serif; text-align: center; }
+  a { display: block; margin: 16px 0; padding: 14px; border-radius: 12px; text-decoration: none; border: 1px solid currentColor; }
+  a.primary { background: #1a73e8; color: #fff; border-color: #1a73e8; }
+</style>
+</head>
+<body>
+<p>Google 캘린더 앱을 여는 중…</p>
+<a class="primary" id="app" href="googlecalendar://">캘린더 앱 열기</a>
+<a href="https://calendar.google.com/">웹으로 열기</a>
+<script>
+  // Jarvis 카톡 메시지의 "자세히 보기" 버튼이 여기로 온다. 카톡 안 브라우저에서 바로 앱으로 넘긴다.
+  var android = /Android/i.test(navigator.userAgent);
+  var target = android
+    ? 'intent://#Intent;package=com.google.android.calendar;S.browser_fallback_url=https%3A%2F%2Fcalendar.google.com%2F;end'
+    : 'googlecalendar://';
+  document.getElementById('app').href = target;
+  location.href = target;
+</script>
+</body>
+</html>
